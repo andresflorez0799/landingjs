@@ -51,9 +51,8 @@ const content = document.getElementById('myVideos');
 //https://tailwindcss.com/docs/font-size estilos de tailwind
 //https://commentpicker.com/youtube-channel-id.php descifrar idchannel
 //https://console.cloud.google.com/apis/library crear y activar el api de google
-const key = 'AIzaSyCPt5Vij1k30vlUv9xlFg_ot9DELsyzcn4';
 const idCanal = 'UCtSmcTs5_QUUowzKa-PcO2w';
-const API = 'https://www.googleapis.com/youtube/v3/search?key=' + key + '&channelId=' + idCanal + '&part=snippet,id&order=date&maxResults=8';
+const API = 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyCPt5Vij1k30vlUv9xlFg_ot9DELsyzcn4&channelId=' + idCanal + '&part=snippet,id&order=date&maxResults=8';
 
 fetch(API)
     .then(response => response.json())
