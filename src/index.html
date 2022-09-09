@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <div class="relative bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+      <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+        <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
+          fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <polygon points="50,0 100,0 50,100 0,100" />
+        </svg>
+        <div>
+          <div class="relative pt-6 px-4 sm:px-6 lg:px-8">
+            <nav class="relative flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global">
+              <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
+                <div class="flex items-center justify-between w-full md:w-auto">
+                  <a href="#">
+                    <span class="sr-only">Title</span>
+                    <img class="h-8 w-auto sm:h-10 avatar" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg">
+                  </a>
+                </div>
+              </div>
+              <div class="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
+                <a href="#" class="font-medium text-gray-500 hover:text-gray-900">About</a>
+                <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Projects</a>
+                <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Contact</a>
+              </div>
+            </nav>
+          </div>
+        </div>
+
+        <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+          <div class="sm:text-center lg:text-left">
+            <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+              <span class="block xl:inline" id="spnName"></span>
+              <span class="block text-indigo-600 xl:inline" id="spnFollowme"></span>
+            </h1>
+            <p id="description"
+              class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+            </p>
+            <br>
+            <h2 class="font-bold text-lg">Algunos de mis Repos en GitHub</h2>
+            <ul id="reposList">
+            </ul>
+          </div>
+        </main>
+      </div>
+    </div>
+    <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+      <img class="h-70 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full avatar"
+        src="https://ui-avatars.com/api/?background=0D8ABC&color=fff" alt="">
+    </div>
+  </div>
+  <div class="bg-white">
+    <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+      <h2 class="text-2xl font-extrabold tracking-tight text-gray-900">Music list</h2>
+      <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8" id="myVideos">
+        <!-- content -->
+         <div class="group relative">
+          <div
+            class="w-full bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:aspect-none">
+            <img src="" alt="" class="w-full">
+          </div>
+          <div class="mt-4 flex justify-between">
+            <h3 class="text-sm text-gray-700">
+              <span aria-hidden="true" class="absolute inset-0"></span>
+              title
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-white">
+    <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+        <h2>Esta landing esta conectada a el api publica de git para extraer los datos asociados al usuario y pintar el contenido como la imagen, datos de nombre y los proyectos creados en github, ademas se consume el api de youtube para cargar el carusel de videos, esta disponible en el siguiente repositorio publico : <a class="italic font-bold text-red-600" href="https://github.com/platzi/async-landing" target="_blank">async-landing</a></h2>
+    </div>
+  </div>
+  <div class="bg-gray-50">
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
+      <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        <span class="block">Contacto</span>
+        <span class="block text-indigo-600">andresflorez0799@gmail.com</span>
+        <span class="block text-sky-200"><a target="_blank" class="" href="https://co.linkedin.com/in/mairon-andr%C3%A9s-florez-alvarez-340124137">LinkedIn</a></span>
+      </h2>
+      <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
+        <!--Alernativamente poner icono con hyperlink a redes-->
+      </div>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+
+</html>
