@@ -10,7 +10,6 @@ const spnFollowme = document.querySelector('#spnFollowme');
 const description = document.querySelector('#description');
 const reposList = document.querySelector('#reposList');
 const content = document.getElementById('myVideos');
-const btnMegusta = document.querySelector('#btnMegusta');
 
 //... Resources to consume and set data from youtube
 const idCanalYoutube = 'UCtSmcTs5_QUUowzKa-PcO2w';
@@ -18,7 +17,7 @@ const API_YOUTUBE = 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyCPt5
 
 //.. Load data from github and set in page
 (async () => {
-    //... Load and set data profile user Github
+    //... Load and set data profile user Github 
     const dataGithub = await fetch(URL_API_GIT)
         .then((response) => response.json())
         .then((data) => {
@@ -56,7 +55,7 @@ const API_YOUTUBE = 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyCPt5
 })();
 
 //... Load videos from youtube api filtered by channel and get top 16th.
-if (1 == 2)
+(async () => {
 fetch(API_YOUTUBE)
     .then(response => response.json())
     .then(response => {
@@ -93,8 +92,6 @@ fetch(API_YOUTUBE)
         content.innerHTML = tarjetaVideoHtml;
     })
     .catch(err => console.error(err));
+})();
 
     
-btnMegusta.addEventListener('click', () => {
-    alert('Me gusta');
-});
