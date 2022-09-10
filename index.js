@@ -1,60 +1,63 @@
-const URL_API_GIT = 'https://api.github.com/users/andresflorez0799';
+//https://tailwindcss.com/docs/font-size estilos de tailwind
+//https://commentpicker.com/youtube-channel-id.php descifrar idchannel
+//https://console.cloud.google.com/apis/library crear y activar el api de google
 
+//... Resources to consume and set data from Github
+const URL_API_GIT = 'https://api.github.com/users/andresflorez0799';
 const imgProfile = document.querySelectorAll('.avatar');
 const spnName = document.querySelector('#spnName');
 const spnFollowme = document.querySelector('#spnFollowme');
 const description = document.querySelector('#description');
 const reposList = document.querySelector('#reposList');
+const content = document.getElementById('myVideos');
+const btnMegusta = document.querySelector('#btnMegusta');
 
-const LoadProfileGithub = () => {
-    fetch(URL_API_GIT)
+//... Resources to consume and set data from youtube
+const idCanalYoutube = 'UCtSmcTs5_QUUowzKa-PcO2w';
+const API_YOUTUBE = 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyCPt5Vij1k30vlUv9xlFg_ot9DELsyzcn4&channelId=' + idCanalYoutube + '&part=snippet,id&order=date&maxResults=20';
+
+//.. Load data from github and set in page
+(async () => {
+    //... Load and set data profile user Github
+    const dataGithub = await fetch(URL_API_GIT)
         .then((response) => response.json())
         .then((data) => {
             imgProfile.forEach(x => x.src = data.avatar_url);
-            spnName.innerHTML = data.name;
+            spnName.innerHTML = data.name; 
             spnFollowme.innerHTML = `@${data.url.split('/').pop()}`;
             description.innerHTML = data.bio;
 
             return data;
-        })
-        .then((response) => {
-            fetch(response.repos_url)
-                .then((response) => response.json())
-                .then((data) => {
-                    if (data != undefined && data != null) {
-                        data.forEach(x => {
-                            if (!x.private) {
-                                let item_li = document.createElement('li');
-                                let item_a = document.createElement('a');
-
-                                item_li.innerHTML = `${x.name}  `;
-                                item_li.setAttribute('title', x.description);
-                                item_li.classList = 'font-light';
-                                item_a.href = x.html_url;
-                                item_a.setAttribute('target', '_blank');
-                                item_a.innerHTML = 'ir al repositorio';
-                                item_a.classList = 'underline decoration-amber-900 text-amber-900 text-xs font-semibold';
-                                item_li.appendChild(item_a);
-                                reposList.appendChild(item_li);
-                            }
-                        });
-                    }
-                })
         });
-};
 
-LoadProfileGithub();
+    //... Load and set data repositories github
+    fetch(dataGithub.repos_url)
+        .then((response) => response.json())
+        .then((data) => {
+            if (data != undefined && data != null) {
+                data.forEach(x => {
+                    if (!x.private) {
+                        let item_li = document.createElement('li');
+                        let item_a = document.createElement('a');
 
+                        item_li.innerHTML = `${x.name}  `;
+                        item_li.setAttribute('title', x.description);
+                        item_li.classList = 'font-light';
+                        item_a.href = x.html_url;
+                        item_a.setAttribute('target', '_blank');
+                        item_a.innerHTML = 'ir al repositorio';
+                        item_a.classList = 'underline decoration-amber-900 text-amber-900 text-xs font-semibold';
+                        item_li.appendChild(item_a);
+                        reposList.appendChild(item_li);
+                    }
+                });
+            }
+        });
+})();
 
-const content = document.getElementById('myVideos');
-
-//https://tailwindcss.com/docs/font-size estilos de tailwind
-//https://commentpicker.com/youtube-channel-id.php descifrar idchannel
-//https://console.cloud.google.com/apis/library crear y activar el api de google
-const idCanal = 'UCtSmcTs5_QUUowzKa-PcO2w';
-const API = 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyCPt5Vij1k30vlUv9xlFg_ot9DELsyzcn4&channelId=' + idCanal + '&part=snippet,id&order=date&maxResults=20';
-
-fetch(API)
+//... Load videos from youtube api filtered by channel and get top 16th.
+if (1 == 2)
+fetch(API_YOUTUBE)
     .then(response => response.json())
     .then(response => {
         let nextPageToken = response.nextPageToken;
@@ -68,9 +71,9 @@ fetch(API)
         let contadorVideos = 0;
         let tarjetaVideoHtml = '';
         videos.forEach(x => {
-            if (x.videoId != undefined && contadorVideos <= 16){
+            if (x.videoId != undefined && contadorVideos <= 16) {
                 tarjetaVideoHtml +=
-                `<div class="group relative">
+                    `<div class="group relative">
                     <div class="w-full bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:aspect-none">
                     <img src="${x.snippet.thumbnails.high.url}" alt="${x.snippet.description}" class="w-full" />
                     </div>
@@ -88,7 +91,10 @@ fetch(API)
             contadorVideos++;
         });
         content.innerHTML = tarjetaVideoHtml;
-
-        console.log(videos);
     })
     .catch(err => console.error(err));
+
+    
+btnMegusta.addEventListener('click', () => {
+    alert('Me gusta');
+});

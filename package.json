@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/andresflorez0799/landingjs/issues"
   },
-  "homepage": "https://github.com/andresflorez0799/landingjs#readme"
+  "homepage": "https://github.com/andresflorez0799/landingjs#readme",
+  "dependencies": {
+    "firebase": "^9.9.4"
+  }
 }
