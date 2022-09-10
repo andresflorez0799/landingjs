@@ -52,7 +52,7 @@ const content = document.getElementById('myVideos');
 //https://commentpicker.com/youtube-channel-id.php descifrar idchannel
 //https://console.cloud.google.com/apis/library crear y activar el api de google
 const idCanal = 'UCtSmcTs5_QUUowzKa-PcO2w';
-const API = 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyCPt5Vij1k30vlUv9xlFg_ot9DELsyzcn4&channelId=' + idCanal + '&part=snippet,id&order=date&maxResults=8';
+const API = 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyCPt5Vij1k30vlUv9xlFg_ot9DELsyzcn4&channelId=' + idCanal + '&part=snippet,id&order=date&maxResults=20';
 
 fetch(API)
     .then(response => response.json())
@@ -65,10 +65,10 @@ fetch(API)
             videoId: x.id.videoId,
             snippet: x.snippet
         }));
-
+        let contadorVideos = 0;
         let tarjetaVideoHtml = '';
         videos.forEach(x => {
-            if (x.videoId != undefined){
+            if (x.videoId != undefined && contadorVideos <= 16){
                 tarjetaVideoHtml +=
                 `<div class="group relative">
                     <div class="w-full bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:aspect-none">
@@ -84,7 +84,8 @@ fetch(API)
                     </div>
                 </div>
                 `;
-            }      
+            }
+            contadorVideos++;
         });
         content.innerHTML = tarjetaVideoHtml;
 
